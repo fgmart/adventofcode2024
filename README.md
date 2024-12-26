@@ -1,2 +1,33 @@
 # adventofcode2024
 learning Rust!
+
+## day1-1
+OK so this was my first try at writing a Rust program.
+
+Figuring out how to read from a file and parse ASCII to numbers took 90% of my time. 
+
+Of course in doing that, I learned a lot.
+
+I started trying to use some code I found to do the equivalent of scanf with a Regex. I never got that working - a combination of not fully understanding how to deal with ```Some``` values and I think the code was a little buggy.
+
+Eventually I realized that just reading lines from ```stdin``` and using the ```expect``` method to handle the error case (by crashing with an error message) was the easiest thing.
+
+Then using ```parse``` with ```expect``` was also easy.
+
+I also discovered the variables shadowing each other, which is a cool feature, and it means that the ```x``` and ```y``` values in the input read-loop don't need to be mutable -- each new one just shadows the previous.
+
+From the documentation for Vector, I encountered the idea of initializing a vector with ```1i32```. This was not explained properly. I figured out that this was the value ```1``` as an ```i32``` type. 
+
+Cool. By this time, I'd figured out the :type approach to defining a variable type (Rust is strongly typed even though it can infer stuff) and I was able to write ```let mut xs: Vec<i32> = vec![];``` to get a Vector of ```i32```s with no initial values.
+
+I Googled to find the ```zip``` form to go through the two vectors in parallel:
+
+```
+for (x, y) in xs.iter().zip(ys.iter()) {
+        sum = sum + (x - y).abs();
+    }
+```
+
+## day 1-2
+
+This took just a couple minutes after the first puzzle was done :)
