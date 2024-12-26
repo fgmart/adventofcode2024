@@ -33,7 +33,7 @@ fn main() {
     
     for x in xs.iter() {
 	for y in ys.iter() {
-	    if (x == y) {
+	    if x == y {
 		sum = sum + x;
 	    }
 	}
