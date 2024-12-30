@@ -69,3 +69,8 @@ I'm not super happy with my logic - it's not functional at all. Lots of messy C-
 
 I don't really like it.
 
+## day 2-2
+
+OK I put the for loop into to a fcn called ```eval_line```. That makes things a little bit better. But the messy control structure with ```continue``s and ```break```s is still there.
+
+I really do like pure functional languages better... I don't understand the commenter who suggested Rust is 90% functional...
