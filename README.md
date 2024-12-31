@@ -71,6 +71,33 @@ I don't really like it.
 
 ## day 2-2
 
-OK I put the for loop into to a fcn called ```eval_line```. That makes things a little bit better. But the messy control structure with ```continue``s and ```break```s is still there.
+OK I put the for loop into to a fcn called ```eval_line```. That makes things a little bit better. But the messy control structure with ```continue```s and ```break```s is still there.
 
 I really do like pure functional languages better... I don't understand the commenter who suggested Rust is 90% functional...
+
+## day 3-1
+
+This was a clear regex problem and the Rust example code for regex is pretty great https://docs.rs/regex/latest/regex/
+
+I've defined the regex so that from an expr like ```mul(123,456)``` it extracts ```123``` as ```m1``` and ```456``` as ```m2```:
+```
+    let re = Regex::new(r"mul\((?<m1>[0-9]+)\,(?<m2>[0-9]+)\)").unwrap();
+```
+Then this block puts all the matches into a Vec of string tuples:
+```
+	let prods: Vec<(&str, &str)> = re.captures_iter(hay).map(|caps| {
+	    let m1 = caps.name("m1").unwrap().as_str();
+	    let m2 = caps.name("m2").unwrap().as_str();
+	    (m1, m2)
+	}).collect();
+```
+Then I iterate over the ```prods``` Vec converting from Str's to i32's, multiplying and summing up:
+```
+	for v in prods.iter() {
+	    let (s1, s2) = v;
+	    let m1 = s1.parse::<i32>().unwrap();
+	    let m2 = s2.parse::<i32>().unwrap();	
+	    prod += m1*m2;
+	}
+```
+Pretty easy at the end.
